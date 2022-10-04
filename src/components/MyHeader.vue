@@ -1,24 +1,27 @@
 <template>
   <div class="header">
-    <button @click="onClose">close</button>
-    <span class="user-name">{{ user }}</span>
+    <button @click="Close">close</button>
+    <span class="user-name">{{ userLocals }}</span>
   </div>
 </template>
 <script>
-const tg = window.Telegram.WebApp;
+import { useTelegram } from "../helpers/useTelegram";
+const { tg, user, onClose } = useTelegram();
+// const tg = window.Telegram.WebApp;
 
 export default {
   data() {
     return {
-      user: tg.initDataUnsafe?.user?.username,
+      userLocals: user?.username,
+      //   user: tg.initDataUnsafe?.user?.username,
     };
   },
   mounted() {
     tg.ready();
   },
   methods: {
-    onClose() {
-      tg.close();
+    Close() {
+      onClose();
     },
   },
 };
