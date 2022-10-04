@@ -1,28 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="onClose">close</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+const tg = window.Telegram.WebApp;
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  mounted() {
+    tg.ready();
+  },
+  methods: {
+    onClose() {
+      tg.close();
+    },
   },
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
 }
 </style>
