@@ -1,21 +1,14 @@
 <template>
   <div id="app">
-    <button @click="onClose">close</button>
+    <my-header></my-header>
   </div>
 </template>
 
 <script>
-const tg = window.Telegram.WebApp;
+import MyHeader from "./components/MyHeader.vue";
 export default {
+  components: { MyHeader },
   name: "App",
-  mounted() {
-    tg.ready();
-  },
-  methods: {
-    onClose() {
-      tg.close();
-    },
-  },
 };
 </script>
 
